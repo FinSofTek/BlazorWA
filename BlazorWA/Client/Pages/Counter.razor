@@ -1,0 +1,36 @@
+﻿@page "/counter"
+@inject ServiciosSingleton singleton
+@inject ServiciosTransient transient
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+
+<p role="status">Current count: @currentCount</p>
+
+<p role="status">Singleton count: @singleton.valor</p>
+<p role="status">Transient count: @transient.valor</p>
+
+
+
+
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<ListadoPeliculas> </ListadoPeliculas>
+
+
+
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+        singleton.valor = currentCount;
+        transient.valor = currentCount;
+    }
+}
